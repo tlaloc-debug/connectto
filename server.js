@@ -1,9 +1,12 @@
 const { Pool } = require('pg');
 const { parse } = require('pg-connection-string')
 const express = require("express");
+const cors = require("cors");
 const connectionString = "postgres://gzktjpucjxdkmo:0ec1951cf76f6691d53b64fb442d2106444eb6a270b3c9e03bc7889763140649@ec2-3-214-3-162.compute-1.amazonaws.com:5432/dffovek21dt59u";
 const config = parse(connectionString)
 const app=express();
+
+app.use(cors());
 
 config.ssl = {
     rejectUnauthorized: false
