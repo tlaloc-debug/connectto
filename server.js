@@ -2,11 +2,15 @@ const { Pool } = require('pg');
 const { parse } = require('pg-connection-string')
 const express = require("express");
 const cors = require("cors");
-const connectionString = "postgres://gzktjpucjxdkmo:0ec1951cf76f6691d53b64fb442d2106444eb6a270b3c9e03bc7889763140649@ec2-3-214-3-162.compute-1.amazonaws.com:5432/dffovek21dt59u";
+const bodyparser = require("body-parser");
+const connectionString = process.env.DATABASE_URL;
 const config = parse(connectionString)
 const app=express();
 
+let name;
+
 app.use(cors());
+app.use(bodyparser.json());
 
 config.ssl = {
     rejectUnauthorized: false
@@ -30,6 +34,37 @@ app.get("/shop", (req, res) => {
     
     });  
 });
+
+app.post("/register", (req, res) => {
+    username = req.body.username;
+    password = req.body.password;
+    avatar = req.body.avatar;
+    pool.query('INSERT INTO users (name, password, avatar) values ($1, $2, $3)', [username, password, avatar], 
+    function(err, result){
+        if (err){
+            res.send(err);
+        }else {
+            res.send(result);
+        }
+    });
+})
+
+app.post("/loginname", (req, res) => {
+    name = req.body.username;
+    res.send(null);
+})
+
+app.get("/login", (req, res) => {
+    pool.query("select * from users where name = $1", [name], function(err, result) {
+        // If an error occurred...
+        if (err) {
+            console.log("Error in query: ")
+            console.log(err);
+        }
+        res.send(result.rows);
+    });  
+});
+
 
 app.listen(process.env.PORT, () => {
     console.log("running")
