@@ -24,6 +24,7 @@ app.post("/searchpicname", (req, res) => {
 })
 
 app.get("/searchpic", (req, res) => {
+    picName="%"+picName+"%";
     pool.query("select * from shop where productshop like $1", [picName], function(err, result) {
         // If an error occurred...
         if (err) {
