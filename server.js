@@ -20,7 +20,7 @@ const pool = new Pool(config)
 
 app.post("/searchpicname", (req, res) => {
     picName = req.body.picName;
-    res.send(null);
+    res.send("done");
 })
 
 app.get("/searchpic", (req, res) => {
@@ -69,7 +69,7 @@ app.post("/register", (req, res) => {
 
 app.post("/loginname", (req, res) => {
     name = req.body.username;
-    res.send(null);
+    res.send("done");
 })
 
 app.get("/login", (req, res) => {
