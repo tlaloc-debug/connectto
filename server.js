@@ -8,6 +8,7 @@ const config = parse(connectionString)
 const app=express();
 
 let name;
+let picName;
 
 app.use(cors());
 app.use(bodyparser.json());
@@ -17,9 +18,25 @@ config.ssl = {
   }
 const pool = new Pool(config)
 
+app.post("/searchpicname", (req, res) => {
+    picName = req.body.picName;
+    res.send(null);
+})
+
+app.get("/searchpic", (req, res) => {
+    pool.query("select * from shop where productshop like %$1%", [picName], function(err, result) {
+        // If an error occurred...
+        if (err) {
+            console.log("Error in query: ")
+            console.log(err);
+        }
+        res.send(result.rows);
+    });  
+});
+
 var sql = "SELECT * FROM shop";
 
-app.get("/shop", (req, res) => {
+app.get("/shopall", (req, res) => {
     pool.query(sql, function(err, result) {
         // If an error occurred...
         if (err) {
@@ -66,6 +83,6 @@ app.get("/login", (req, res) => {
 });
 
 
-app.listen(process.env.PORT, () => {
+app.listen(3001, () => {
     console.log("running")
 });
