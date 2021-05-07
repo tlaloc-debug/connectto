@@ -156,7 +156,7 @@ app.get("/resconsultA", (req, res) => {
             console.log("Error in query: ")
             console.log(err);
         }
-        res.send(result);
+        res.send(result.rows);
     });  
 });
 
@@ -173,7 +173,7 @@ app.get("/resconsultB", (req, res) => {
             console.log("Error in query: ")
             console.log(err);
         }
-        res.send(result);
+        res.send(result.rows);
     });  
 });
 
@@ -190,7 +190,7 @@ app.get("/resconsultC", (req, res) => {
             console.log("Error in query: ")
             console.log(err);
         }
-        res.send(result);
+        res.send(result.rows);
     });  
 });
 
