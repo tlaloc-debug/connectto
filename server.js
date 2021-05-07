@@ -10,7 +10,7 @@ const app=express();
 let name;
 let picName;
 
-app.use(cors());
+app.use(cors({Origin: "https://choseyourpic.herokuapp.com"}));
 app.use(bodyparser.json());
 
 config.ssl = {
