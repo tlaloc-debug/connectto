@@ -121,7 +121,7 @@ app.post("/data", (req,res) => {
 })
 
 app.post("/negative", (req, res) => {
-    database.query("INSERT INTO welders (name, general, sympa, sympb, sympc, sympd, sympe, sympf, sympg, symph, sympi, sympj, sympk, sympl, sympm) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)", ["Erick Diaz", false, false, false, false, false, false, false, false, false, false, false, false, false, false ], 
+    pool.query("INSERT INTO welders (name, general, sympa, sympb, sympc, sympd, sympe, sympf, sympg, symph, sympi, sympj, sympk, sympl, sympm) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)", ["Erick Diaz", false, false, false, false, false, false, false, false, false, false, false, false, false, false ], 
     (err, result)=>{
         if (err){
             console.log(err);
@@ -133,7 +133,7 @@ app.post("/negative", (req, res) => {
 
 app.post("/positive", (req, res) => {
     console.log(sympA)
-    database.query("INSERT INTO welders (name, general, sympa, sympb, sympc, sympd, sympe, sympf, sympg, symph, sympi, sympj, sympk, sympl, sympm) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)", ["Erick Diaz", true, sympA, sympB, sympC, sympD, sympE, sympF, sympG, sympH, sympI, sympJ, sympK, sympL, sympM ], 
+    pool.query("INSERT INTO welders (name, general, sympa, sympb, sympc, sympd, sympe, sympf, sympg, symph, sympi, sympj, sympk, sympl, sympm) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)", ["Erick Diaz", true, sympA, sympB, sympC, sympD, sympE, sympF, sympG, sympH, sympI, sympJ, sympK, sympL, sympM ], 
     (err, result)=>{
         if (err){
             console.log(err);
@@ -150,7 +150,7 @@ app.post("/reqconsultA", (req, res) => {
 
 app.get("/resconsultA", (req, res) => {
     date=date+"%";
-    database.query("SELECT name FROM welders where date like %1", [date], function(err, result) {
+    pool.query("SELECT name FROM welders where date like %1", [date], function(err, result) {
         // If an error occurred...
         if (err) {
             console.log("Error in query: ")
@@ -167,7 +167,7 @@ app.post("/reqconsultB", (req, res) => {
 
 app.get("/resconsultB", (req, res) => {
     date=date+"%";
-    database.query("SELECT name FROM welders where general = $1 and date like $2", [true, date], function(err, result) {
+    pool.query("SELECT name FROM welders where general = $1 and date like $2", [true, date], function(err, result) {
         // If an error occurred...
         if (err) {
             console.log("Error in query: ")
@@ -184,7 +184,7 @@ app.post("/reqconsultC", (req, res) => {
 
 app.get("/resconsultC", (req, res) => {
     date=date+"%";
-    database.query("SELECT * FROM welders where general = $1 and date like $2", [true, date], function(err, result) {
+    pool.query("SELECT * FROM welders where general = $1 and date like $2", [true, date], function(err, result) {
         // If an error occurred...
         if (err) {
             console.log("Error in query: ")
