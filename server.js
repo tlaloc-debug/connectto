@@ -83,6 +83,17 @@ app.get("/login", (req, res) => {
     });  
 });
 
+app.get("/resconsulta", (req, res) => {
+    pool.query("SELECT name FROM welders where date like '2015-10-21'", function(err, result) {
+        // If an error occurred...
+        if (err) {
+            console.log("Error in query: ")
+            console.log(err);
+        }
+        console.log(result.rows);
+        res.send(result.rows);
+    });  
+});
 
 app.listen(process.env.PORT, () => {
     console.log("running")
