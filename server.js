@@ -22,6 +22,8 @@ let picTimer16;
 let picSerial; 
 let picIntosc; 
 
+let picFamily;
+
 app.use(cors());
 app.use(bodyparser.json());
 
@@ -70,6 +72,21 @@ app.post("/advancesearchname", (req, res) => {
 
 app.get("/advancesearch", (req, res) => {
     pool.query("select * from micros, analog, digital, family, memorytype, presentation, speeds where progmemory>=$1 and eeprom>=$2 and ram>=$3 and pins>=$4 and adc>=$5 and res>=$6 and max>=$7 and timer8>=$8 and timer16>=$9 and serial!=$10 and intosc>=$11 and micro_id=adc_id and micro_id=dig_id and model=model_id and memorytype=type_id and packages=box_id and micro_id=speed_id", [picMemory, picEeprom, picRam, picPins, picChanels, picResolution, picMax, picTimer8, picTimer16, picSerial, picIntosc], function(err, result) {
+        if (err) {
+            console.log("Error in query: ")
+            console.log(err);
+        }
+        res.send(result.rows);
+    });  
+});
+
+app.post("/searchfamilyname", (req, res) => {
+    picFamily = req.body.picFamily;
+    res.send("done");
+})
+
+app.get("/searchfamily", (req, res) => {
+    pool.query("select * from micros, analog, digital, family, memorytype, presentation, speeds where model=$1 and micro_id=adc_id and micro_id=dig_id and model=model_id and memorytype=type_id and packages=box_id and micro_id=speed_id", [picFamily], function(err, result) {
         if (err) {
             console.log("Error in query: ")
             console.log(err);
