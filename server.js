@@ -105,7 +105,7 @@ app.post("/comparepicname", (req, res) => {
 })
 
 app.get("/comparepic", (req, res) => {
-    pool.query("select * from micros, analog, digital, family, memorytype, presentation, speeds where product=$1 and product=$2 and micro_id=adc_id and micro_id=dig_id and model=model_id and memorytype=type_id and packages=box_id and micro_id=speed_id", [FirstpicName, SecondpicName], function(err, result) {
+    pool.query("select * from micros, analog, digital, family, memorytype, presentation, speeds where product=$1 and micro_id=adc_id and micro_id=dig_id and model=model_id and memorytype=type_id and packages=box_id and micro_id=speed_id union select * from micros, analog, digital, family, memorytype, presentation, speeds where product=$2 and micro_id=adc_id and micro_id=dig_id and model=model_id and memorytype=type_id and packages=box_id and micro_id=speed_id", [FirstpicName, SecondpicName], function(err, result) {
         if (err) {
             console.log("Error in query: ")
             console.log(err);
