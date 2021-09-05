@@ -25,8 +25,7 @@ app.post("/searchpicname", (req, res) => {
 
 app.get("/searchpic", (req, res) => {
     picName="%"+picName+"%";
-    pool.query("select * from micros where product like $1", [picName], function(err, result) {
-        // If an error occurred...
+    pool.query("select * from micros, analog, digital, family, memorytype, presentation, speeds where product like $1 and micro_id=adc_id and micro_id=dig_id and micro_id=model_id and micro_id=type_id and micro_id=box_id and micro_id=speed_id", [picName], function(err, result) {
         if (err) {
             console.log("Error in query: ")
             console.log(err);
