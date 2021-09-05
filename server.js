@@ -10,6 +10,18 @@ const app=express();
 let name;
 let picName;
 
+let picMemory; 
+let picEeprom; 
+let picRam; 
+let picPins; 
+let picChanels; 
+let picResolution; 
+let picMax; 
+let picTimer8; 
+let picTimer16; 
+let picSerial; 
+let picIntosc; 
+
 app.use(cors());
 app.use(bodyparser.json());
 
@@ -26,6 +38,38 @@ app.post("/searchpicname", (req, res) => {
 app.get("/searchpic", (req, res) => {
     picName="%"+picName+"%";
     pool.query("select * from micros, analog, digital, family, memorytype, presentation, speeds where product like $1 and micro_id=adc_id and micro_id=dig_id and model=model_id and memorytype=type_id and packages=box_id and micro_id=speed_id", [picName], function(err, result) {
+        if (err) {
+            console.log("Error in query: ")
+            console.log(err);
+        }
+        res.send(result.rows);
+    });  
+});
+
+app.post("/advancesearchname", (req, res) => {
+    picMemory = req.body.picMemory;
+    picEeprom = req.body.picEeprom; 
+    picRam = req.body.picRam;
+    picPins = req.body.picPins;
+    picChanels = req.body.picChanels;
+    picResolution = req.body.picResolution;
+    picMax = req.body.picMax;
+    picTimer8 = req.body.picTimer8;
+    if (picTimer8) {picTimer8 = 1;}
+        else {picTimer8 = 0;}
+    picTimer16 = req.body.picTimer16;
+    if (picTimer16) {picTimer16 = 1;}
+        else {picTimer16 = 0;}
+    picSerial = req.body.picSerial;
+    if (picSerial==true) picSerial = 'no';
+    picIntosc = req.body.picIntosc;
+    if (picIntosc) {picIntosc = 1;}
+        else {picIntosc = 0;}
+    res.send("done");
+})
+
+app.get("/searchpic", (req, res) => {
+    pool.query("select * from micros, analog, digital, family, memorytype, presentation, speeds where progmemory>=$1 and eeprom>=$2 and ram>=$3 and pins>=$4 and adc>=$5 and res>=$6 and max>=$7 and timer8>=$8 and timer16>=$9 and serial!=$10 and intosc>=$11 and micro_id=adc_id and micro_id=dig_id and model=model_id and memorytype=type_id and packages=box_id and micro_id=speed_id", [picMemory, picEeprom, picRam, picPins, picChanels, picResolution, picMax, picTimer8, picTimer16, picSerial, picIntosc], function(err, result) {
         if (err) {
             console.log("Error in query: ")
             console.log(err);
