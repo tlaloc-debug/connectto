@@ -24,6 +24,9 @@ let picIntosc;
 
 let picFamily;
 
+let FirstpicName;
+let SecondpicName;
+
 app.use(cors());
 app.use(bodyparser.json());
 
@@ -87,6 +90,22 @@ app.post("/searchfamilyname", (req, res) => {
 
 app.get("/searchfamily", (req, res) => {
     pool.query("select * from micros, analog, digital, family, memorytype, presentation, speeds where model=$1 and micro_id=adc_id and micro_id=dig_id and model=model_id and memorytype=type_id and packages=box_id and micro_id=speed_id", [picFamily], function(err, result) {
+        if (err) {
+            console.log("Error in query: ")
+            console.log(err);
+        }
+        res.send(result.rows);
+    });  
+});
+
+app.post("/comparepicname", (req, res) => {
+    FirstpicName = req.body.FirstpicName;
+    SecondpicName = req.body.SecondpicName;
+    res.send("done");
+})
+
+app.get("/comparepic", (req, res) => {
+    pool.query("select * from micros, analog, digital, family, memorytype, presentation, speeds where product=$1 and product=$2 and micro_id=adc_id and micro_id=dig_id and model=model_id and memorytype=type_id and packages=box_id and micro_id=speed_id", [FirstpicName, SecondpicName], function(err, result) {
         if (err) {
             console.log("Error in query: ")
             console.log(err);
