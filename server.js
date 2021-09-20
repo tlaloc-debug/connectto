@@ -184,8 +184,8 @@ var transporter = nodemailer.createTransport({
   });
   
   var mailOptions = {
-    from: 'youremail@gmail.com',
-    to: 'myfriend@yahoo.com',
+    from: 'MicroInfo-user',
+    to: 'pelondinho@hotmail.com',
     subject: 'Sending Email using Node.js',
     text: 'That was easy!'
   };
