@@ -175,28 +175,32 @@ app.get("/resconsulta", (req, res) => {
     });  
 });
 
-var transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: 'tlalocvideos@gmail.com',
-      pass: 'veinteAbril1989'
-    }
-  });
-  
-  var mailOptions = {
-    from: 'MicroInfo-user',
-    to: 'pelondinho@hotmail.com',
-    subject: 'Sending Email using Node.js',
-    text: 'That was easy!'
-  };
-  
-  transporter.sendMail(mailOptions, function(error, info){
-    if (error) {
-      console.log(error);
-    } else {
-      console.log('Email sent: ' + info.response);
-    }
-  }); 
+app.post("/send-email", (req, res) => {
+    info_mail = req.body.info_mail;
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'tlalocvideos@gmail.com',
+          pass: 'veinteAbril1989'
+        }
+      });
+      
+      var mailOptions = {
+        from: 'MicroInfo-user',
+        to: 'pelondinho@hotmail.com',
+        subject: 'Sending Email using Node.js',
+        text: 'That was easy!'
+      };
+      
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      }); 
+})
+
 
 app.listen(process.env.PORT, () => {
     console.log("running")
