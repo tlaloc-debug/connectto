@@ -6,6 +6,7 @@ const bodyparser = require("body-parser");
 const connectionString = process.env.DATABASE_URL;
 const config = parse(connectionString)
 const app=express();
+var nodemailer = require('nodemailer');
 
 let name;
 let picName;
@@ -173,6 +174,29 @@ app.get("/resconsulta", (req, res) => {
         res.send(result.rows);
     });  
 });
+
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'tlalocvideos@gmail.com',
+      pass: 'veinteAbril1989'
+    }
+  });
+  
+  var mailOptions = {
+    from: 'youremail@gmail.com',
+    to: 'myfriend@yahoo.com',
+    subject: 'Sending Email using Node.js',
+    text: 'That was easy!'
+  };
+  
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  }); 
 
 app.listen(process.env.PORT, () => {
     console.log("running")
