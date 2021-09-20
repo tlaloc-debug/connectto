@@ -177,16 +177,16 @@ app.get("/resconsulta", (req, res) => {
 
 app.post("/send-email", (req, res) => {
     info_mail = req.body.info_mail;
-    var transporter = nodemailer.createTransport({
-        service: 'smtp.gmail.com',
+    var transporter = nodemailer.createTransport("SMTP", {
+        service: 'hotmail',
         auth: {
-          user: 'tlalocvideos@gmail.com',
+          user: 'erick.delacruz@hotmail.es',
           pass: 'veinteAbril1989'
         }
       });
       
       var mailOptions = {
-        from: 'tlalocvideos@gmail.com',
+        from: 'MicroInfo-user',
         to: 'pelondinho@hotmail.com',
         subject: 'Sending Email using Node.js',
         text: 'That was easy!'
