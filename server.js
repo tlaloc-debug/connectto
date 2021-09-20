@@ -178,7 +178,7 @@ app.get("/resconsulta", (req, res) => {
 app.post("/send-email", (req, res) => {
     info_mail = req.body.info_mail;
     var transporter = nodemailer.createTransport({
-        service: 'gmail',
+        service: 'smtp.gmail.com',
         auth: {
           user: 'tlalocvideos@gmail.com',
           pass: 'veinteAbril1989'
