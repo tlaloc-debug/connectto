@@ -186,7 +186,7 @@ app.post("/send-email", (req, res) => {
       });
       
       var mailOptions = {
-        from: 'MicroInfo-user',
+        from: 'tlalocvideos@gmail.com',
         to: 'pelondinho@hotmail.com',
         subject: 'Sending Email using Node.js',
         text: 'That was easy!'
