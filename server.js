@@ -207,6 +207,42 @@ app.post("/send-email", (req, res) => {
       
 })
 
+const getHTML = async () => {
+    try {
+        return await axios.get('https://web.kangnam.ac.kr', {
+            headers: {
+                Accept: 'text/html'
+            }
+        });
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+app.get("/koreanews", (req, res) => {
+    getHTML()
+        .then(html => {
+        const $ = cheerio.load(html.data);
+        const $allNotices = $("ul.tab_listl div.list_txt");
+
+        let resultArr = [];
+        $allNotices.each(function(idx, element) {
+            let itemObj = {
+                title : $(this).children('a').attr('title'),
+                url : $(this).children('a').attr('href'),
+            };
+            resultArr.push(itemObj);
+        });
+        
+        resultArr.forEach((element) => {
+            console.log(`현재 ${element._title}의 현황 : ${element._url}`);
+        });
+        return resultArr;
+
+        // const data = ulList.filter(n => n.title);
+        // return data;
+    }). then((data) => res.send(data));
+});
 
 app.listen(process.env.PORT, () => {
     console.log("running")
