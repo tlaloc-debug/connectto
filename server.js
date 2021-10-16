@@ -9,6 +9,7 @@ const app=express();
 var nodemailer = require('nodemailer');
 
 const cheerio = require('cheerio');
+const axios = require('axios');
 
 let name;
 let picName;
@@ -216,8 +217,8 @@ const getHTML = async () => {
                 Accept: 'text/html'
             }
         });
-    } catch (err) {
-        console.log(err);
+    } catch (error) {
+        console.log(error);
     }
 };
 
