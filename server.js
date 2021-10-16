@@ -8,6 +8,8 @@ const config = parse(connectionString)
 const app=express();
 var nodemailer = require('nodemailer');
 
+const cheerio = require('cheerio');
+
 let name;
 let picName;
 
@@ -214,8 +216,8 @@ const getHTML = async () => {
                 Accept: 'text/html'
             }
         });
-    } catch (error) {
-        console.log(error);
+    } catch (err) {
+        console.log(err);
     }
 };
 
