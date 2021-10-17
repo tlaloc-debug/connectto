@@ -141,7 +141,7 @@ app.get("/shopall", (req, res) => {
 app.post("/register", (req, res) => {
     username = req.body.username;
     password = req.body.password;
-    pool.query('INSERT INTO users (name, password) values ($1, $2)', [username, password], 
+    pool.query('INSERT INTO users (user, password) values ($1, $2)', [username, password], 
     function(err, result){
         if (err){
             res.send(err);
@@ -157,7 +157,7 @@ app.post("/loginname", (req, res) => {
 })
 
 app.get("/login", (req, res) => {
-    pool.query("select * from users where name = $1", [name], function(err, result) {
+    pool.query("select * from users where user = $1", [name], function(err, result) {
         // If an error occurred...
         if (err) {
             console.log("Error in query: ")
