@@ -141,7 +141,11 @@ app.get("/shopall", (req, res) => {
 app.post("/register", (req, res) => {
     username = req.body.username;
     password = req.body.password;
-    pool.query('INSERT INTO users (myuser, password) values ($1, $2)', [username, password], 
+    name = req.body.myname;
+    vehicule =  req.body.myvehicule;
+    email = req.body.myemail;
+    phone = req.body.myphone;
+    pool.query('INSERT INTO users (myuser, password, name, vehicule, email, phone) values ($1, $2, $3, $4, $5, $6)', [username, password, name, vehicule, email, phone], 
     function(err, result){
         if (err){
             res.send(err);
