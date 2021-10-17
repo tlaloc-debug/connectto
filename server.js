@@ -141,8 +141,7 @@ app.get("/shopall", (req, res) => {
 app.post("/register", (req, res) => {
     username = req.body.username;
     password = req.body.password;
-    avatar = req.body.avatar;
-    pool.query('INSERT INTO users (name, password, avatar) values ($1, $2, $3)', [username, password, avatar], 
+    pool.query('INSERT INTO users (name, password, avatar) values ($1, $2)', [username, password], 
     function(err, result){
         if (err){
             res.send(err);
