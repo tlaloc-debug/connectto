@@ -172,7 +172,7 @@ app.get("/login", (req, res) => {
 });
 
 app.get("/userappointments", (req, res) => {
-    pool.query("select * from appuser", function(err, result) {
+    pool.query("select * from appusers", function(err, result) {
         // If an error occurred...
         if (err) {
             console.log("Error in query: ")
