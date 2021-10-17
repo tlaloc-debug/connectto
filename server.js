@@ -171,6 +171,17 @@ app.get("/login", (req, res) => {
     });  
 });
 
+app.get("/userappointments", (req, res) => {
+    pool.query("select * from appuser", function(err, result) {
+        // If an error occurred...
+        if (err) {
+            console.log("Error in query: ")
+            console.log(err);
+        }
+        res.send(result.rows);
+    });  
+});
+
 app.get("/resconsulta", (req, res) => {
     pool.query("SELECT name FROM welders where date like '2015-10-21'", function(err, result) {
         // If an error occurred...
