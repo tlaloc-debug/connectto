@@ -146,7 +146,7 @@ app.post("/register", (req, res) => {
     email = req.body.myemail;
     phone = req.body.myphone;
     language = req.body.mylanguage;
-    pool.query('INSERT INTO users (myuser, password, name, vehicule, email, phone) values ($1, $2, $3, $4, $5, $6)', [username, password, name, vehicule, email, phone], 
+    pool.query('INSERT INTO users (myuser, password, name, vehicule, email, phone, language) values ($1, $2, $3, $4, $5, $6, $7)', [username, password, name, vehicule, email, phone, language], 
     function(err, result){
         if (err){
             res.send(err);
