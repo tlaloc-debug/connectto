@@ -172,8 +172,19 @@ app.get("/login", (req, res) => {
     });  
 });
 
-app.get("/userappointments", (req, res) => {
+app.get("/userappointmentsfixauto", (req, res) => {
     pool.query("select * from appusers", function(err, result) {
+        // If an error occurred...
+        if (err) {
+            console.log("Error in query: ")
+            console.log(err);
+        }
+        res.send(result.rows);
+    });  
+});
+
+app.get("/allusersfixauto", (req, res) => {
+    pool.query("select myuser from users", function(err, result) {
         // If an error occurred...
         if (err) {
             console.log("Error in query: ")
