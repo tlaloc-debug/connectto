@@ -194,6 +194,17 @@ app.get("/allusersfixauto", (req, res) => {
     });  
 });
 
+app.get("/allreviewsfixauto", (req, res) => {
+    pool.query("select * from reviews", function(err, result) {
+        // If an error occurred...
+        if (err) {
+            console.log("Error in query: ")
+            console.log(err);
+        }
+        res.send(result.rows);
+    });  
+});
+
 app.get("/resconsulta", (req, res) => {
     pool.query("SELECT name FROM welders where date like '2015-10-21'", function(err, result) {
         // If an error occurred...
