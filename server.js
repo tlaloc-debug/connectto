@@ -172,7 +172,7 @@ app.get("/login", (req, res) => {
     });  
 });
 
-app.get("/userappointmentsfixauto", (req, res) => {
+app.get("/userappointmentsfixcar", (req, res) => {
     pool.query("select appuser,name,applocation,appdate,apptime,stars,reviews,datereview from appusers,users", function(err, result) {
         // If an error occurred...
         if (err) {
@@ -183,19 +183,8 @@ app.get("/userappointmentsfixauto", (req, res) => {
     });  
 });
 
-app.get("/allusersfixauto", (req, res) => {
-    pool.query("select myuser from users", function(err, result) {
-        // If an error occurred...
-        if (err) {
-            console.log("Error in query: ")
-            console.log(err);
-        }
-        res.send(result.rows);
-    });  
-});
-
-app.get("/allreviewsfixauto", (req, res) => {
-    pool.query("select * from reviews", function(err, result) {
+app.get("/allreviewsfixcar", (req, res) => {
+    pool.query("select loginuser,name,reviews.language,stars,myreview from reviews,users where loginuser=myuser;", function(err, result) {
         // If an error occurred...
         if (err) {
             console.log("Error in query: ")
