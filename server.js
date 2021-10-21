@@ -322,6 +322,20 @@ app.post("/updatereview", (req, res) => {
             }
         });
     })
+
+app.post("/sendreview", (req, res) => {
+    appname = req.body.appname;
+    appstar = req.body.appstar;
+    apptext = req.body.apptext;
+    pool.query('insert into reviews (loginuser, stars, myreview) values ($1, $2, $3);', [appname, appstar, apptext], 
+        function(err, result){
+            if (err){
+                res.send(err);
+            }else {
+                res.send(result);
+            }
+        });
+    })
   
 app.post("/searchdate", (req, res) => {
     searchdate = req.body.searchdate;
