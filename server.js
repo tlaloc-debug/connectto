@@ -291,76 +291,91 @@ app.post("/bookappointment", (req, res) => {
           }
       });
     })
-  
-    app.post("/searchdate", (req, res) => {
-      searchdate = req.body.searchdate;
-      console.log(searchdate)
-      res.send("done");
-      })
-  
-      app.get("/resultdate", (req, res) => {
-        formatdate=searchdate.slice(0,11);
-        formatdate=formatdate+"%";
-        pool.query("select time from appointment where date like $1", [formatdate], function(err, result) {
-            // If an error occurred...
-            if (err) {
-                res.send("Error in query: ")
+
+app.post("/bookappointmentlogin", (req, res) => {
+    appointmentdate = req.body.appointmentdate;
+    appointmenttime = req.body.appointmenttime;
+    appointmentlocation = req.body.appointmentlocation;
+    appname = req.body.appname;
+    pool.query('INSERT INTO appusers (appuser,applocation,appdate,apptime) values ($1, $2, $3, $4)', [appname, appointmentlocation, appointmentdate, appointmenttime], 
+        function(err, result){
+            if (err){
                 res.send(err);
+            }else {
+                res.send(result);
             }
-            res.send(result.rows);
-        });  
-    });
-  
-  app.get("/products", (req, res) => {
-      fetch("https://tlaloc-debug-dev.myshopify.com/admin/api/graphql.json", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-Shopify-Access-Token": "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"
-        },
-        body: JSON.stringify({
-          query: `query findProducts($query: String!, $num: Int!) {
-             shop {
-               name
-             }
-  
-             collections (first: $num, query: $query) {
-              edges{
-                node{
-                  title
-                  products (first: $num){
-                    edges{
-                      node{
-                        title
-                        totalInventory
-                        variants(first:1){
-                          edges{
-                            node{
-                              price
-                            }
-                          }
-                          
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-              
-            }
-  
-           }`,
-          variables: {query: "inches", num: 5 }
-        })
-      })
-        .then(result => {
-          return result.json();
-        })
-        .then(data => {
-          console.log("data returned:\n", data);
-          res.send(data);
         });
+    })
+  
+app.post("/searchdate", (req, res) => {
+    searchdate = req.body.searchdate;
+    console.log(searchdate)
+    res.send("done");
+    })
+
+    app.get("/resultdate", (req, res) => {
+    formatdate=searchdate.slice(0,11);
+    formatdate=formatdate+"%";
+    pool.query("select time from appointment where date like $1", [formatdate], function(err, result) {
+        // If an error occurred...
+        if (err) {
+            res.send("Error in query: ")
+            res.send(err);
+        }
+        res.send(result.rows);
+    });  
+});
+  
+app.get("/products", (req, res) => {
+    fetch("https://tlaloc-debug-dev.myshopify.com/admin/api/graphql.json", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+        "X-Shopify-Access-Token": "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"
+    },
+    body: JSON.stringify({
+        query: `query findProducts($query: String!, $num: Int!) {
+            shop {
+            name
+            }
+
+            collections (first: $num, query: $query) {
+            edges{
+            node{
+                title
+                products (first: $num){
+                edges{
+                    node{
+                    title
+                    totalInventory
+                    variants(first:1){
+                        edges{
+                        node{
+                            price
+                        }
+                        }
+                        
+                    }
+                    }
+                }
+                }
+            }
+            }
+            
+        }
+
+        }`,
+        variables: {query: "inches", num: 5 }
+    })
+    })
+    .then(result => {
+        return result.json();
+    })
+    .then(data => {
+        console.log("data returned:\n", data);
+        res.send(data);
     });
+});
 
 app.listen(process.env.PORT, () => {
     console.log("running")
