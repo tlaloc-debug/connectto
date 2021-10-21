@@ -346,7 +346,7 @@ app.post("/searchdate", (req, res) => {
     app.get("/resultdate", (req, res) => {
     formatdate=searchdate.slice(0,11);
     formatdate=formatdate+"%";
-    pool.query("select time from appointment where date like $1", [formatdate], function(err, result) {
+    pool.query("select time from appointment where date like $1 union select apptime from appusers where appdate like $1;", [formatdate], function(err, result) {
         // If an error occurred...
         if (err) {
             res.send("Error in query: ")
