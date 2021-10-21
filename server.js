@@ -313,7 +313,7 @@ app.post("/updatereview", (req, res) => {
     apptime = req.body.apptime;
     appstar = req.body.appstar;
     apptext = req.body.apptext;
-    pool.query('UPDATE appusers SET stars=$1,reviews=$2,datereview=now() WHERE appuser=$3 and appdate=$4 and apptime=$5', [appstars, apptext, appname, appdate, apptime], 
+    pool.query('UPDATE appusers SET stars=$1,reviews=$2,datereview=now() WHERE appuser=$3 and appdate=$4 and apptime=$5', [appstar, apptext, appname, appdate, apptime], 
         function(err, result){
             if (err){
                 res.send(err);
