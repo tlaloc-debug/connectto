@@ -306,6 +306,22 @@ app.post("/bookappointmentlogin", (req, res) => {
             }
         });
     })
+
+app.post("/updatereview", (req, res) => {
+    appname = req.body.appname;
+    appdate = req.body.appdate;
+    apptime = req.body.apptime;
+    appstar = req.body.appstar;
+    apptext = req.body.apptext;
+    pool.query('UPDATE appusers SET stars=$1,reviews=$2,datereview=now() WHERE appuser=$3 and appdate=$4 and apptime=$5', [appstars, apptext, appname, appdate, apptime], 
+        function(err, result){
+            if (err){
+                res.send(err);
+            }else {
+                res.send(result);
+            }
+        });
+    })
   
 app.post("/searchdate", (req, res) => {
     searchdate = req.body.searchdate;
