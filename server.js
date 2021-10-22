@@ -184,7 +184,7 @@ app.get("/userappointmentsfixcar", (req, res) => {
 });
 
 app.get("/allreviewsfixcar", (req, res) => {
-    pool.query("select loginuser,name,language,stars,myreview from reviews,users where loginuser=myuser union select appuser,name,language,stars,reviews from appusers,users where reviews is not null and appuser=myuser;", function(err, result) {
+    pool.query("select loginuser,name,language,stars,myreview,myreviewdate from reviews,users where loginuser=myuser union select appuser,name,language,stars,reviews,datereview from appusers,users where reviews is not null and appuser=myuser;", function(err, result) {
         // If an error occurred...
         if (err) {
             console.log("Error in query: ")
