@@ -222,7 +222,7 @@ app.post("/send-email", (req, res) => {
         from: 'tlalocvideos@gmail.com',
         to: 'tlalocdebug@gmail.com',
         subject: 'Sending Email using Node.js',
-        text: emailName + emailAccount + emailMessage
+        text: emailName + "\n" + emailAccount + "\n" + emailMessage
       };
       
       transporter.sendMail(mailOptions, function(error, info){
