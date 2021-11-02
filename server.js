@@ -3,6 +3,7 @@ const { parse } = require('pg-connection-string')
 const express = require("express");
 const cors = require("cors");
 const bodyparser = require("body-parser");
+const fetch = require("node-fetch");
 const connectionString = process.env.DATABASE_URL;
 const config = parse(connectionString)
 const app=express();
