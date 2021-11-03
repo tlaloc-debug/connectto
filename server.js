@@ -3,6 +3,7 @@ const { parse } = require('pg-connection-string')
 const express = require("express");
 const cors = require("cors");
 const bodyparser = require("body-parser");
+const fetch = require("node-fetch");
 const connectionString = process.env.DATABASE_URL;
 const config = parse(connectionString)
 const app=express();
@@ -355,6 +356,56 @@ app.post("/searchdate", (req, res) => {
         res.send(result.rows);
     });  
 });
+
+
+app.get("/products", (req, res) => {
+    fetch("https://tlaloc-debug-dev.myshopify.com/admin/api/graphql.json", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Shopify-Access-Token": "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"
+      },
+      body: JSON.stringify({
+        query: `query findProducts($query: String!, $num: Int!) {
+           shop {
+             name
+           }
+           collections (first: $num, query: $query) {
+            edges{
+              node{
+                title
+                products (first: $num){
+                  edges{
+                    node{
+                      title
+                      totalInventory
+                      variants(first:1){
+                        edges{
+                          node{
+                            price
+                          }
+                        }
+                        
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            
+          }
+         }`,
+        variables: {query: "inches", num: 5 }
+      })
+    })
+      .then(result => {
+        return result.json();
+      })
+      .then(data => {
+        console.log("data returned:\n", data);
+        res.send(data);
+      });
+  });
 
 app.listen(process.env.PORT, () => {
     console.log("running")
