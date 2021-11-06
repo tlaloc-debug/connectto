@@ -97,6 +97,16 @@
           "name": "Netlify",
           "class": "cib:netlify",
           "type": "server"
+        },
+        {
+          "name": "Git",
+          "class": "bi:git",
+          "type": "version"
+        },
+        {
+          "name": "GitHub",
+          "class": "akar-icons:github-fill",
+          "type": "version"
         }
       ]
     }
