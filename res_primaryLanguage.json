@@ -1,0 +1,117 @@
+{
+  "basic_info": {
+    "description_header": "Hello",
+    "description": "My name is Erick Diaz, I'm a mechatronic engineer who is seeking to launch a career building web applications and services. At college, I learned how to code in several programming languages and driven by my big passion for coding I have learned how to create a fully functinal Site using the latest technologies.",
+    "section_name": {
+      "about": "About me",
+      "projects": "Projects",
+      "skills": "Skills",
+      "experience": "Experience",
+      "visit_site": "Visit Site",
+      "view_code": "View Code",
+      "front_end": "front end",
+      "back_end": "back end",
+      "server": "server",
+      "ecommerce": "e-commerce"
+    }
+    
+  },
+  "projects": [
+    {
+      "title": "microinfo.com",
+      "description": "A site where you can learn the basics of microcontrollers and see their specifications.",
+      "status": "Finished",
+      "images": 0,
+      "site_url": "https://stupefied-jones-abfc9f.netlify.app/",
+      "github_url": "https://github.com/tlaloc-debug/microinfonetlify",
+      "technologies": [
+        {
+          "class": "logos:react",
+          "name": "React"
+        },
+        {
+          "class": "logos:nodejs-icon",
+          "name": "NodeJS"
+        },
+        {
+          "class": "logos:bootstrap",
+          "name": "Bootstrap"
+        },
+        {
+          "class": "logos:postgresql",
+          "name": "Postgresql"
+        }
+      ]
+    },
+    {
+      "title": "fixcar.com",
+      "description": "A site for a body shop, in this site you can create an account, make appointments, give reviews and buy tires through Shopify.",
+      "status": "In progress",
+      "images": 1,
+      "site_url": "https://modest-wright-238d50.netlify.app/",
+      "github_url": "https://github.com/tlaloc-debug/garagecopy",
+      "technologies": [
+        {
+          "class": "logos:react",
+          "name": "React"
+        },
+        {
+          "class": "logos:nodejs-icon",
+          "name": "NodeJS"
+        },
+        {
+          "class": "logos:bootstrap",
+          "name": "Bootstrap"
+        },
+        {
+          "class": "logos:postgresql",
+          "name": "Postgresql"
+        },
+        {
+          "class": "logos:graphql",
+          "name": "Graphql"
+        },
+        {
+          "class": "logos:shopify",
+          "name": "Shopify"
+        }
+      ]
+    },
+    {
+      "title": "mynewjob.com",
+      "description": "A site for a recruitment agency.",
+      "status": "In progress",
+      "images": 2,
+      "site_url": "https://mynewjob.herokuapp.com/",
+      "github_url": "https://github.com/tlaloc-debug/mynewjob",
+      "technologies": [
+        {
+          "class": "logos:python",
+          "name": "Python"
+        },
+        {
+          "class": "logos:django-icon",
+          "name": "Django"
+        },
+        {
+          "class": "logos:bootstrap",
+          "name": "Bootstrap"
+        },
+        {
+          "class": "logos:postgresql",
+          "name": "Postgresql"
+        }
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "company": "Graduated from College",
+      "title": "Mechatronic Engineer",
+      "mainTech": ["Mechatronic Engineering"],
+      "technologies": [
+        
+      ]
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+    "basic_info": {
+      "name": "Erick Diaz",
+      "titles": [ "Web Developer" , "Mechatronic Engineer" ],
+      "social": [
+        {
+          "name": "github",
+          "url": "https://github.com/tlaloc-debug/",
+          "class": "akar-icons:github-fill"
+        },
+        {
+          "name": "linkedin",
+          "url": "https://www.linkedin.com/in/erick-diaz-228167225",
+          "class": "akar-icons:linkedin-fill"
+        }
+      ],
+      "image": "myProfile.jpg"
+    },
+    "skills": {
+      "icons": [
+        {
+          "name": "HTML",
+          "class": "bx:bxs-file-html",
+          "type": "front"
+        },
+        {
+          "name": "CSS",
+          "class": "bx:bxs-file-css",
+          "type": "front"
+        },
+        {
+          "name": "JavaScript",
+          "class": "bx:bxl-javascript",
+          "type": "front"
+        },
+        {
+          "name": "React",
+          "class": "bx:bxl-react",
+          "type": "front"
+        },
+        {
+          "name": "Bootstrap",
+          "class": "akar-icons:bootstrap-fill",
+          "type": "front"
+        },
+        {
+          "name": "After Effetcs",
+          "class": "cib:adobe-after-effects",
+          "type": "front"
+        },
+        {
+          "name": "C++",
+          "class": "bx:bxl-c-plus-plus",
+          "type": "back"
+        },
+        {
+          "name": "Postgresql",
+          "class": "cib:postgresql",
+          "type": "back"
+        },
+        {
+          "name": "MySql",
+          "class": "cib:mysql",
+          "type": "back"
+        },
+        {
+          "name": "Python",
+          "class": "akar-icons:python-fill",
+          "type": "back"
+        },
+        {
+          "name": "Django",
+          "class": "akar-icons:django-fill",
+          "type": "front"
+        },
+        {
+          "name": "Heroku",
+          "class": "cib:heroku",
+          "type": "server"
+        },
+        {
+          "name": "Graphql",
+          "class": "akar-icons:graphql-fill",
+          "type": "back"
+        },
+        {
+          "name": "Shopify",
+          "class": "bx:bxl-shopify",
+          "type": "ecommerce"
+        },
+        {
+          "name": "NodeJS",
+          "class": "bx:bxl-nodejs",
+          "type": "back"
+        },
+        {
+          "name": "Netlify",
+          "class": "cib:netlify",
+          "type": "server"
+        }
+      ]
+    }
+  }

@@ -12,6 +12,10 @@ var nodemailer = require('nodemailer');
 const cheerio = require('cheerio');
 const axios = require('axios');
 
+const primaryLanguage = require('./res_primaryLanguage.json');
+const secondaryLanguage = require('./res_secondaryLanguage.json');
+const personalInfo = require('./portfolio_shared_data.json');
+
 let name;
 let picName;
 
@@ -406,6 +410,18 @@ app.get("/products", (req, res) => {
         res.send(data);
       });
   });
+
+app.get('/primarylanguage', (request, response) => {
+    response.json(primaryLanguage);
+});
+
+app.get('/secondarylanguage', (request, response) => {
+    response.json(secondaryLanguage);  
+});
+
+app.get('/information', (request, response) => {
+    response.json(personalInfo);  
+});
 
 app.listen(process.env.PORT, () => {
     console.log("running")
