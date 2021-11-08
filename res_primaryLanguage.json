@@ -80,7 +80,7 @@
     },
     {
       "title": "mynewjob.com",
-      "description": "A site for a recruitment agency.",
+      "description": "A site for a recruitment agency. The administrator of this site can make changes in the list of open positions through the Django admin site.",
       "status": "In progress",
       "images": 2,
       "site_url": "https://mynewjob.herokuapp.com/",
