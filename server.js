@@ -423,6 +423,10 @@ app.get('/information', (request, response) => {
     response.json(personalInfo);  
 });
 
+app.get('/onlineshop', (request, response) => {
+    response.json(products);  
+});
+
 app.listen(process.env.PORT, () => {
     console.log("running")
 });
