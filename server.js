@@ -15,6 +15,7 @@ const axios = require('axios');
 const primaryLanguage = require('./res_primaryLanguage.json');
 const secondaryLanguage = require('./res_secondaryLanguage.json');
 const personalInfo = require('./portfolio_shared_data.json');
+const productsOnLineShop = require('./res_products.json');
 
 let name;
 let picName;
@@ -424,7 +425,7 @@ app.get('/information', (request, response) => {
 });
 
 app.get('/onlineshop', (request, response) => {
-    response.json(products);  
+    response.json(productsOnLineShop);  
 });
 
 app.listen(process.env.PORT, () => {
