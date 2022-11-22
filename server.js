@@ -362,7 +362,7 @@ app.post("/searchdate", (req, res) => {
     });  
 });
 
-
+/*
 app.get("/products", (req, res) => {
     fetch("https://tlaloc-debug-dev.myshopify.com/admin/api/graphql.json", {
       method: "POST",
@@ -411,6 +411,7 @@ app.get("/products", (req, res) => {
         res.send(data);
       });
   });
+  */
 
 app.get('/primarylanguage', (request, response) => {
     response.json(primaryLanguage);
