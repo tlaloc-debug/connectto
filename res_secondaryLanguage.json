@@ -1,7 +1,7 @@
 {
   "basic_info": {
     "description_header": "Allô!",
-    "description": "Je m'appelle Erick Diaz, je suis un ingénieur mécatronique qui cherche à lancer une carrière dans la construction d'applications et de services Web. Au collège, j'ai appris à coder dans plusieurs langages de programmation et poussé par ma grande passion pour le codage, j'ai appris à créer un site entièrement fonctionnel en utilisant les dernières technologies.",
+    "description": "",
     "section_name": {
       "about": "À propos de moi",
       "projects": "Projets",
@@ -107,9 +107,9 @@
   ],
   "experience": [
     {
-      "company": "Diplômé de l'Université",
-      "title": "Ingénieur Mécatronique",
-      "mainTech": ["Ingénierie Mécatronique"],
+      "company": "Universite de Montreal",
+      "title": "Informatique",
+      "mainTech": [],
       "technologies": [
         
       ]
