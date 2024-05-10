@@ -1,7 +1,7 @@
 {
   "basic_info": {
     "description_header": "Hello",
-    "description": "My name is Erick Diaz, I'm a mechatronic engineer who is seeking to launch a career building web applications and services. At college, I learned how to code in several programming languages and driven by my big passion for coding I have learned how to create a fully functinal Site using the latest technologies.",
+    "description": "",
     "section_name": {
       "about": "About me",
       "projects": "Projects",
@@ -107,9 +107,9 @@
   ],
   "experience": [
     {
-      "company": "Graduated from College",
-      "title": "Mechatronic Engineer",
-      "mainTech": ["Mechatronic Engineering"],
+      "company": "Universite de Montreal",
+      "title": "Computer Science",
+      "mainTech": [],
       "technologies": [
         
       ]
