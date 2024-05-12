@@ -362,13 +362,13 @@ app.post("/searchdate", (req, res) => {
     });  
 });
 
-/*
+
 app.get("/products", (req, res) => {
-    fetch("https://tlaloc-debug-dev.myshopify.com/admin/api/graphql.json", {
+    fetch("https://{shop}.myshopify.com/admin/api/2024-04/graphql.json", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-Shopify-Access-Token": "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"
+        "X-Shopify-Access-Token": process.env.SHOPIFY_KEY
       },
       body: JSON.stringify({
         query: `query findProducts($query: String!, $num: Int!) {
@@ -411,7 +411,7 @@ app.get("/products", (req, res) => {
         res.send(data);
       });
   });
-  */
+
 
 app.get('/primarylanguage', (request, response) => {
     response.json(primaryLanguage);
