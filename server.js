@@ -364,7 +364,7 @@ app.post("/searchdate", (req, res) => {
 
 
 app.get("/products", (req, res) => {
-    fetch("https://{shop}.myshopify.com/admin/api/2024-04/graphql.json", {
+    fetch("https://fixcar-store.myshopify.com/admin/api/2024-04/graphql.json", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
