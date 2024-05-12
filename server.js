@@ -371,35 +371,22 @@ app.get("/products", (req, res) => {
         "X-Shopify-Access-Token": process.env.SHOPIFY_KEY
       },
       body: JSON.stringify({
-        query: `query findProducts($query: String!, $num: Int!) {
-           shop {
-             name
-           }
-           collections (first: $num, query: $query) {
-            edges{
-              node{
-                title
-                products (first: $num){
-                  edges{
-                    node{
-                      title
-                      totalInventory
-                      variants(first:1){
-                        edges{
-                          node{
-                            price
-                          }
+        query: `{
+                    products(first: 10) {
+                        nodes {
+                            id
+                            title
+                            variants(first:1){
+                                edges{
+                                    node{
+                                        price
+                                        inventoryQuantity
+                                    }
+                                }
+                            }
                         }
-                        
-                      }
                     }
-                  }
-                }
-              }
-            }
-            
-          }
-         }`,
+                }`,
         variables: {query: "inches", num: 5 }
       })
     })
